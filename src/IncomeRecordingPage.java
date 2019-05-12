@@ -1,5 +1,3 @@
-package MoneyManager;
-
 import javax.swing.*;
 
 public class IncomeRecordingPage {
