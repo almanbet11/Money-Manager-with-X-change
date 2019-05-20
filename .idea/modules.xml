@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/Money-Manager-with-X-change.iml" filepath="$PROJECT_DIR$/Money-Manager-with-X-change.iml" />
+      <module fileurl="file://$PROJECT_DIR$/MyProjectWithFX.iml" filepath="$PROJECT_DIR$/MyProjectWithFX.iml" />
     </modules>
   </component>
 </project>
