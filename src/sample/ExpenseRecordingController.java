@@ -2,10 +2,20 @@ package sample;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
-public class ExpenseRecordingController {
+import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
+
+public class ExpenseRecordingController extends WelcomingPageController implements Initializable {
 
     @FXML
     private TextField expense;
@@ -20,7 +30,14 @@ public class ExpenseRecordingController {
     private Button exitButton;
 
     @FXML
-    void cancelButtonPressed(ActionEvent event) {
+    void cancelButtonPressed(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("infoPage.fxml"));
+        Parent newPage = loader.load();
+        Scene tableViewScene = new Scene(newPage);
+        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+        window.setScene(tableViewScene);
+        window.show();
 
     }
 
@@ -28,5 +45,8 @@ public class ExpenseRecordingController {
     void saveButtonPressed(ActionEvent event) {
 
     }
+
+    @Override
+    public void initialize(URL url, ResourceBundle rb){}
 
 }

@@ -51,6 +51,7 @@ public class WelcomingPageController implements Initializable {
 
     private ToggleGroup currencyRBgroup;
 
+
     public String getFirstName(){
         return firstName.getText();
     }
@@ -92,14 +93,14 @@ public class WelcomingPageController implements Initializable {
 
         //access the controller, it will pass this class's instance variable to the next class
         InfoPageController controller = loader.getController();
-        controller.valueTaker(getFirstName(), getLastName(), getBalance(), getCurrency());
+        controller.valueTakerFrom1stPage(getFirstName(), getLastName(), getBalance(), getCurrency());
 
         Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
         window.setScene(tableViewScene);
         window.show();
     }
 
-    public void cancelButtonPressed(ActionEvent event) throws  IOException {
+    public void cancelButton(ActionEvent event) throws  IOException {
         Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
 
         window.close();
