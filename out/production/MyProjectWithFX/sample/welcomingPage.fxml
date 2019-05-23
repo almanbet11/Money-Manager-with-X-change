@@ -36,7 +36,7 @@
             <Font size="14.0" />
          </font>
       </TextField>
-      <TextField fx:id="balance" layoutX="151.0" layoutY="276.0" prefHeight="25.0" prefWidth="309.0" promptText="balance" style="-fx-background-radius: 25;">
+      <TextField fx:id="balance" layoutX="151.0" layoutY="276.0" prefHeight="25.0" prefWidth="309.0" promptText="balance (valid)" style="-fx-background-radius: 25;">
          <font>
             <Font size="14.0" />
          </font>

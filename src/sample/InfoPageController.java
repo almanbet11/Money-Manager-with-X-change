@@ -89,46 +89,56 @@ public class InfoPageController implements Initializable{
     //Method for values that are taken from Welcoming page
     public void valueTakerFrom1stPage(Person user){
         currentUser = user;
-        this.firstNameLastName.setText(currentUser.getFistName() +" "+currentUser.getLastName());
-        this.balance.setText("0");
         initialIncome += currentUser.getBalance();
         currentUser.setBalance(0);
+        this.firstNameLastName.setText(currentUser.getFistName() +" "+currentUser.getLastName());
+        this.balance.setText("0");
         this.income.setText(Integer.toString(initialIncome));
         this.currencyType.setText(currentUser.getCurrencyType());
         this.expense.setText("-" + staticExpense);
-
     }
 
     //Method for values that are taken from Income page
     public void valueTakerFromIncomePage(int newIncome){
-        this.firstNameLastName.setText(currentUser.getFistName() + " " + currentUser.getLastName());
-        this.balance.setText(Integer.toString(currentUser.getBalance()));
-        this.currencyType.setText(currentUser.getCurrencyType());
         initialIncome += newIncome;
+        staticBalance = initialIncome - staticExpense;
         currentUser.setIncome(initialIncome);
-        this.income.setText(Integer.toString((currentUser.getIncome())));
+        this.firstNameLastName.setText(currentUser.getFistName() + " " + currentUser.getLastName());
+        this.balance.setText(Integer.toString(staticBalance));
+        this.currencyType.setText(currentUser.getCurrencyType());
+        this.income.setText(Integer.toString((initialIncome)));
         this.expense.setText("-" + staticExpense);
+        this.historyTA.setText(result.substring(4, result.length()-1));
     }
 
     //Method for values that are taken from Expense page
     public void valueTakerFromExpensePage(int newExpense, String description){
+            if (newExpense != 0){
+            result += String.format("%s %s%n", description,  " ---> " + newExpense);
 
-        result += String.format("%s %70s%n", description,  "-" + newExpense);
+            currentUser.setExpense(newExpense);
+            currentUser.setIncome(initialIncome);
+            staticExpense += newExpense;
+            currentUser.setExpense(staticExpense);
+            staticBalance = initialIncome - staticExpense;
+            currentUser.setBalance(staticBalance);
 
-        this.firstNameLastName.setText(currentUser.getFistName() + " " + currentUser.getLastName());
-        this.currencyType.setText(currentUser.getCurrencyType());
-        currentUser.setExpense(newExpense);
-        currentUser.setIncome(initialIncome);
-        this.income.setText(Integer.toString(initialIncome));
-        staticExpense += newExpense;
-        currentUser.setExpense(staticExpense);
-        this.expense.setText("-" + currentUser.getExpense());
-        staticBalance = initialIncome - staticExpense;
-        currentUser.setBalance(staticBalance);
-        this.balance.setText(Integer.toString(currentUser.getBalance()));
+            this.firstNameLastName.setText(currentUser.getFistName() + " " + currentUser.getLastName());
+            this.currencyType.setText(currentUser.getCurrencyType());
+            this.income.setText(Integer.toString(initialIncome));
+            this.expense.setText("-" + currentUser.getExpense());
+            this.balance.setText(Integer.toString(currentUser.getBalance()));
+            this.historyTA.setText(result.substring(4, result.length()-1));
+            }
+            else{
+                this.firstNameLastName.setText(currentUser.getFistName() + " " + currentUser.getLastName());
+                this.currencyType.setText(currentUser.getCurrencyType());
+                this.income.setText(Integer.toString(initialIncome));
+                this.expense.setText("-" + currentUser.getExpense());
+                this.balance.setText(Integer.toString(currentUser.getBalance()));
+                this.historyTA.setText(result.substring(4, result.length()-1));
 
-        //work on list
-        this.historyTA.setText(result.substring(4, result.length()-1));
+            }
 
 
 
