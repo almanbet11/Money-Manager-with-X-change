@@ -30,21 +30,10 @@ public class ExpenseRecordingController extends WelcomingPageController implemen
     private Button exitButton;
 
     @FXML
-    void cancelButtonPressed(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("infoPage.fxml"));
-        Parent newPage = loader.load();
-        Scene tableViewScene = new Scene(newPage);
-        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
-        window.setScene(tableViewScene);
-        window.show();
-
-    }
+    void cancelButtonPressed(ActionEvent event) throws IOException {}
 
     @FXML
-    void saveButtonPressed(ActionEvent event) {
-
-    }
+    void saveButtonPressed(ActionEvent event) throws IOException {}
 
     @Override
     public void initialize(URL url, ResourceBundle rb){}

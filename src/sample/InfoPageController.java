@@ -44,40 +44,21 @@ public class InfoPageController implements Initializable{
     @FXML
     private ListView<?> expenseList;
 
-    //It will take the value from previous class
-    public void valueTakerFrom1stPage(String firstName, String lastName, int balance, String currencyType){
-        this.firstNameLastName.setText(firstName +" "+ lastName);
-        this.balance.setText("" + balance);
-        this.currencyType.setText(currencyType);
-    }
+    private static Person currentUser;
 
-    public void valueTakerFromIncomePage(String firstName, String lastName, int balance, String currencyType, int income){
-        this.income.setText(""+income);
-    }
-
-    public void valueTakerFromExpensePage(String fisrtName, String lastName, int balance, String currencyType, int income, int expense,
-                                          ArrayList<String> historyOfExpense){}
+    private int initialIncome = 0;
 
     @FXML
-    public void expenseAddButtonPressed(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("expenseRecordingPage.fxml"));
-        Parent newPage = loader.load();
-
-        Scene tableViewScene = new Scene(newPage);
-
-        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
-        window.setScene(tableViewScene);
-        window.show();
-    }
+    public void expenseAddButtonPressed(ActionEvent event) throws IOException {}
 
     @FXML
     public void incomeAddButtonPressed(ActionEvent event) throws IOException {
+
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("incomeRecordingPage.fxml"));
-        Parent newPage = loader.load();
+        Parent infoPage = loader.load();
 
-        Scene tableViewScene = new Scene(newPage);
+        Scene tableViewScene = new Scene(infoPage);
 
         Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
         window.setScene(tableViewScene);
@@ -90,6 +71,25 @@ public class InfoPageController implements Initializable{
         income.setText("0");
         expense.setText("0");
     }
+
+    //Method for values that are taken from Welcoming page
+    public void valueTakerFrom1stPage(Person user){
+        currentUser = user;
+        this.firstNameLastName.setText(currentUser.getFistName() +" "+currentUser.getLastName());
+        this.balance.setText("" +currentUser.getBalance());
+        this.currencyType.setText(currentUser.getCurrencyType());
+    }
+
+    //Method for values that are taken from Income page
+    public void valueTakerFromIncomePage(int newIncome){
+        this.firstNameLastName.setText(currentUser.getFistName() +" "+currentUser.getLastName());
+        this.balance.setText(Integer.toString(currentUser.getBalance()));
+        this.currencyType.setText(currentUser.getCurrencyType());
+        currentUser.setIncome(newIncome);
+        this.income.setText(Integer.toString((initialIncome + currentUser.getIncome())));
+    }
+
+    public void valueTakerFromExpensePage(){}
 
 }
 

@@ -83,24 +83,26 @@ public class WelcomingPageController implements Initializable {
         return currency;
     }
 
+
     public void submitButtonPressed(ActionEvent event) throws IOException {
+
+        Person currentUser = new Person(getFirstName(), getLastName(), getCurrency(), getBalance());
 
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("infoPage.fxml"));
-        Parent newPage = loader.load();
+        Parent infoPage = loader.load();
 
-        Scene tableViewScene = new Scene(newPage);
+        Scene tableViewScene = new Scene(infoPage);
 
-        //access the controller, it will pass this class's instance variable to the next class
         InfoPageController controller = loader.getController();
-        controller.valueTakerFrom1stPage(getFirstName(), getLastName(), getBalance(), getCurrency());
+        controller.valueTakerFrom1stPage(currentUser);
 
         Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
         window.setScene(tableViewScene);
         window.show();
     }
 
-    public void cancelButton(ActionEvent event) throws  IOException {
+    public void exitButtonPressed(ActionEvent event) throws  IOException {
         Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
 
         window.close();
@@ -115,6 +117,8 @@ public class WelcomingPageController implements Initializable {
         this.dollarRB.setToggleGroup(currencyRBgroup);
         this.euroRB.setToggleGroup(currencyRBgroup);
         this.yuanRB.setToggleGroup(currencyRBgroup);
+
+
 
     }
 
