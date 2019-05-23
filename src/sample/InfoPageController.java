@@ -42,14 +42,29 @@ public class InfoPageController implements Initializable{
     private Button expenseAddButton;
 
     @FXML
-    private ListView<?> expenseList;
+    private ListView<String> expenseList;
 
     private static Person currentUser;
 
-    private int initialIncome = 0;
+    private static int initialIncome = 0;
+
+    private static int staticBalance = 0;
+
+    private static int staticExpense = 0;
+
 
     @FXML
-    public void expenseAddButtonPressed(ActionEvent event) throws IOException {}
+    public void expenseAddButtonPressed(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("expenseRecordingPage.fxml"));
+        Parent infoPage = loader.load();
+
+        Scene tableViewScene = new Scene(infoPage);
+
+        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+        window.setScene(tableViewScene);
+        window.show();
+    }
 
     @FXML
     public void incomeAddButtonPressed(ActionEvent event) throws IOException {
@@ -76,8 +91,12 @@ public class InfoPageController implements Initializable{
     public void valueTakerFrom1stPage(Person user){
         currentUser = user;
         this.firstNameLastName.setText(currentUser.getFistName() +" "+currentUser.getLastName());
-        this.balance.setText("" +currentUser.getBalance());
+        this.balance.setText("0");
+        initialIncome += currentUser.getBalance();
+        currentUser.setBalance(0);
+        this.income.setText(Integer.toString(initialIncome));
         this.currencyType.setText(currentUser.getCurrencyType());
+
     }
 
     //Method for values that are taken from Income page
@@ -85,11 +104,13 @@ public class InfoPageController implements Initializable{
         this.firstNameLastName.setText(currentUser.getFistName() +" "+currentUser.getLastName());
         this.balance.setText(Integer.toString(currentUser.getBalance()));
         this.currencyType.setText(currentUser.getCurrencyType());
-        currentUser.setIncome(newIncome);
-        this.income.setText(Integer.toString((initialIncome + currentUser.getIncome())));
+        initialIncome += newIncome;
+        currentUser.setIncome(initialIncome);
+        this.income.setText(Integer.toString((currentUser.getIncome())));
     }
 
-    public void valueTakerFromExpensePage(){}
+    //Method for values that are taken from Expense page
+    public void valueTakerFromExpensePage(int newExpense, String description){}
 
 }
 

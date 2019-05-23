@@ -32,7 +32,21 @@ public class IncomeRecordingController extends WelcomingPageController implement
 
 
     @FXML
-    void cancelButtonPressed(ActionEvent event) throws IOException {}
+    void cancelButtonPressed(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("infoPage.fxml"));
+        Parent infoPage = loader.load();
+
+        Scene tableViewScene = new Scene(infoPage);
+
+        InfoPageController controller = loader.getController();
+        controller.valueTakerFromIncomePage(0);
+
+        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+        window.setScene(tableViewScene);
+        window.show();
+
+    }
 
     @FXML
     void saveButtonPressed(ActionEvent event) throws IOException {

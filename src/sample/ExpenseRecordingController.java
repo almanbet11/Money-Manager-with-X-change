@@ -29,6 +29,14 @@ public class ExpenseRecordingController extends WelcomingPageController implemen
     @FXML
     private Button exitButton;
 
+    public int getExpense(){
+        return Integer.parseInt(expense.getText());
+    }
+
+    public String getDescription(){
+        return descriptionOfExpense.getText();
+    }
+
     @FXML
     void cancelButtonPressed(ActionEvent event) throws IOException {}
 
