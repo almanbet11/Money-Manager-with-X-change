@@ -22,7 +22,7 @@
             <Font name="Times New Roman Bold" size="20.0" />
          </font>
       </Label>
-      <Label fx:id="firstNameLastName" layoutX="186.0" layoutY="23.0" prefHeight="37.0" prefWidth="308.0" text="Label">
+      <Label fx:id="firstNameLastName" layoutX="186.0" layoutY="23.0" prefHeight="37.0" prefWidth="308.0" text="Label" textFill="#f9c400">
          <font>
             <Font name="Times New Roman Bold" size="20.0" />
          </font>
@@ -32,7 +32,7 @@
             <Font name="Times New Roman Bold" size="20.0" />
          </font>
       </Label>
-      <Label fx:id="currencyType" layoutX="186.0" layoutY="64.0" prefHeight="37.0" prefWidth="308.0" text="Label">
+      <Label fx:id="currencyType" layoutX="186.0" layoutY="64.0" prefHeight="37.0" prefWidth="308.0" text="Label" textFill="#f9c400">
          <font>
             <Font name="Times New Roman Bold" size="20.0" />
          </font>
@@ -72,8 +72,14 @@
             <Line endX="309.0" layoutX="293.0" layoutY="37.0" startX="-293.0" stroke="#568ea6" />
             <Line endX="-7.0" endY="-91.0" layoutX="187.0" layoutY="91.0" startX="-7.0" startY="64.0" stroke="#568ea6" />
             <Line endX="-9.0" endY="-37.0" layoutX="402.0" layoutY="37.0" startX="-9.0" startY="119.0" stroke="#568ea6" />
-            <Button layoutX="49.0" layoutY="101.0" mnemonicParsing="false" onAction="#incomeAddButtonPressed" prefHeight="37.0" prefWidth="85.0" text="Add" />
-            <Button layoutX="248.0" layoutY="101.0" mnemonicParsing="false" onAction="#expenseAddButtonPressed" prefHeight="37.0" prefWidth="85.0" text="Add" />
+            <Button layoutX="49.0" layoutY="101.0" mnemonicParsing="false" onAction="#incomeAddButtonPressed" prefHeight="37.0" prefWidth="85.0" text="Add">
+               <font>
+                  <Font size="14.0" />
+               </font></Button>
+            <Button layoutX="248.0" layoutY="101.0" mnemonicParsing="false" onAction="#expenseAddButtonPressed" prefHeight="37.0" prefWidth="85.0" text="Add">
+               <font>
+                  <Font size="14.0" />
+               </font></Button>
          </children>
       </AnchorPane>
       <Label layoutX="3.0" layoutY="294.0" text="History of expences:" textFill="WHITE">

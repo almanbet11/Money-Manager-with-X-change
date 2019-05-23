@@ -22,22 +22,22 @@
         </Label>
         <TextField fx:id="descriptionOfExpense" layoutX="73.0" layoutY="201.0" prefHeight="25.0" prefWidth="454.0" promptText="describe your expense" style="-fx-background-radius: 25;">
             <font>
-                <Font size="14.0" />
+                <Font size="16.0" />
             </font>
         </TextField>
       <TextField fx:id="expenseTF" layoutX="73.0" layoutY="268.0" prefHeight="25.0" prefWidth="454.0" promptText="enter your expense" style="-fx-background-radius: 25;">
          <font>
-            <Font size="14.0" />
+            <Font size="16.0" />
          </font>
       </TextField>
         <Button fx:id="saveButton" layoutX="58.0" layoutY="430.0" mnemonicParsing="false" onAction="#saveButtonPressed" prefHeight="30.0" prefWidth="138.0" text="Save">
             <font>
-                <Font name="System Bold" size="14.0" />
+                <Font name="System Bold" size="16.0" />
             </font>
         </Button>
         <Button fx:id="exitButton" layoutX="417.0" layoutY="430.0" mnemonicParsing="false" onAction="#cancelButtonPressed" prefHeight="30.0" prefWidth="138.0" text="Cancel">
             <font>
-                <Font name="System Bold" size="14.0" />
+                <Font name="System Bold" size="16.0" />
             </font>
         </Button>
     </children>
