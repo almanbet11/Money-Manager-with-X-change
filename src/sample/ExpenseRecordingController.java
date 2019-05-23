@@ -71,6 +71,7 @@ public class ExpenseRecordingController extends WelcomingPageController implemen
     }
 
     @Override
-    public void initialize(URL url, ResourceBundle rb){}
+    public void initialize(URL url, ResourceBundle rb){
+    }
 
 }

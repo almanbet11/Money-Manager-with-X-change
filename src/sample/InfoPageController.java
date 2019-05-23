@@ -7,10 +7,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
-import javafx.scene.control.RadioButton;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -42,7 +39,7 @@ public class InfoPageController implements Initializable{
     private Button expenseAddButton;
 
     @FXML
-    private ListView<String> expenseList;
+    private TextArea historyTA ;
 
     private static Person currentUser;
 
@@ -51,6 +48,8 @@ public class InfoPageController implements Initializable{
     private static int staticBalance = 0;
 
     private static int staticExpense = 0;
+
+    private static String result;
 
 
     @FXML
@@ -102,7 +101,7 @@ public class InfoPageController implements Initializable{
 
     //Method for values that are taken from Income page
     public void valueTakerFromIncomePage(int newIncome){
-        this.firstNameLastName.setText(currentUser.getFistName() +" "+currentUser.getLastName());
+        this.firstNameLastName.setText(currentUser.getFistName() + " " + currentUser.getLastName());
         this.balance.setText(Integer.toString(currentUser.getBalance()));
         this.currencyType.setText(currentUser.getCurrencyType());
         initialIncome += newIncome;
@@ -113,10 +112,12 @@ public class InfoPageController implements Initializable{
 
     //Method for values that are taken from Expense page
     public void valueTakerFromExpensePage(int newExpense, String description){
-        this.firstNameLastName.setText(currentUser.getFistName() + "" + currentUser.getLastName());
+
+        result += String.format("%s %70s%n", description,  "-" + newExpense);
+
+        this.firstNameLastName.setText(currentUser.getFistName() + " " + currentUser.getLastName());
         this.currencyType.setText(currentUser.getCurrencyType());
         currentUser.setExpense(newExpense);
-        currentUser.setHistoryOfExpense(description);
         currentUser.setIncome(initialIncome);
         this.income.setText(Integer.toString(initialIncome));
         staticExpense += newExpense;
@@ -127,6 +128,9 @@ public class InfoPageController implements Initializable{
         this.balance.setText(Integer.toString(currentUser.getBalance()));
 
         //work on list
+        this.historyTA.setText(result.substring(4, result.length()-1));
+
+
 
 
     }
