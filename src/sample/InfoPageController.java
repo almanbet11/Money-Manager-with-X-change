@@ -96,6 +96,7 @@ public class InfoPageController implements Initializable{
         currentUser.setBalance(0);
         this.income.setText(Integer.toString(initialIncome));
         this.currencyType.setText(currentUser.getCurrencyType());
+        this.expense.setText("-" + staticExpense);
 
     }
 
@@ -107,10 +108,28 @@ public class InfoPageController implements Initializable{
         initialIncome += newIncome;
         currentUser.setIncome(initialIncome);
         this.income.setText(Integer.toString((currentUser.getIncome())));
+        this.expense.setText("-" + staticExpense);
     }
 
     //Method for values that are taken from Expense page
-    public void valueTakerFromExpensePage(int newExpense, String description){}
+    public void valueTakerFromExpensePage(int newExpense, String description){
+        this.firstNameLastName.setText(currentUser.getFistName() + "" + currentUser.getLastName());
+        this.currencyType.setText(currentUser.getCurrencyType());
+        currentUser.setExpense(newExpense);
+        currentUser.setHistoryOfExpense(description);
+        currentUser.setIncome(initialIncome);
+        this.income.setText(Integer.toString(initialIncome));
+        staticExpense += newExpense;
+        currentUser.setExpense(staticExpense);
+        this.expense.setText("-" + currentUser.getExpense());
+        staticBalance = initialIncome - staticExpense;
+        currentUser.setBalance(staticBalance);
+        this.balance.setText(Integer.toString(currentUser.getBalance()));
+
+        //work on list
+
+
+    }
 
 }
 

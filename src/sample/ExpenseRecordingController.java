@@ -18,7 +18,7 @@ import java.util.ResourceBundle;
 public class ExpenseRecordingController extends WelcomingPageController implements Initializable {
 
     @FXML
-    private TextField expense;
+    private TextField expenseTF;
 
     @FXML
     private TextField descriptionOfExpense;
@@ -29,8 +29,8 @@ public class ExpenseRecordingController extends WelcomingPageController implemen
     @FXML
     private Button exitButton;
 
-    public int getExpense(){
-        return Integer.parseInt(expense.getText());
+    public int getExpenseTF(){
+        return Integer.parseInt(expenseTF.getText());
     }
 
     public String getDescription(){
@@ -38,10 +38,37 @@ public class ExpenseRecordingController extends WelcomingPageController implemen
     }
 
     @FXML
-    void cancelButtonPressed(ActionEvent event) throws IOException {}
+    void cancelButtonPressed(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("infoPage.fxml"));
+        Parent infoPage = loader.load();
+
+        Scene tableViewScene = new Scene(infoPage);
+
+        InfoPageController controller = loader.getController();
+        controller.valueTakerFromExpensePage(0, "");
+
+        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+        window.setScene(tableViewScene);
+        window.show();
+    }
 
     @FXML
-    void saveButtonPressed(ActionEvent event) throws IOException {}
+    void saveButtonPressed(ActionEvent event) throws IOException {
+
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("infoPage.fxml"));
+        Parent infoPage = loader.load();
+
+        Scene tableViewScene = new Scene(infoPage);
+
+        InfoPageController controller = loader.getController();
+        controller.valueTakerFromExpensePage(getExpenseTF(), getDescription());
+
+        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+        window.setScene(tableViewScene);
+        window.show();
+    }
 
     @Override
     public void initialize(URL url, ResourceBundle rb){}

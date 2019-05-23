@@ -9,10 +9,9 @@ public class Person {
     private int balance;
     private int income;
     private int expense;
-    public ArrayList<String> historyOfExpense = new ArrayList<>();
+    public String historyOfExpense;
 
-    public Person(String firstName, String lastName, String currencyType, int balance, int income, int expense, ArrayList<String>
-                  historyOfExpense){
+    public Person(String firstName, String lastName, String currencyType, int balance, int income, int expense, String historyOfExpense){
         this.fistName = firstName;
         this.lastName = lastName;
         this.currencyType = currencyType;
@@ -55,7 +54,7 @@ public class Person {
         return expense;
     }
 
-    public ArrayList<String> getHistoryOfExpense() {
+    public String getHistoryOfExpense() {
         return historyOfExpense;
     }
 
@@ -75,7 +74,7 @@ public class Person {
         this.expense = expense;
     }
 
-    public void setHistoryOfExpense(ArrayList<String> historyOfExpense) {
+    public void setHistoryOfExpense(String historyOfExpense) {
         this.historyOfExpense = historyOfExpense;
     }
 }
