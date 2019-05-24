@@ -15,7 +15,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class ExpenseRecordingController extends WelcomingPageController implements Initializable {
+public class ExpenseRecordingController implements Initializable {
 
     @FXML
     private TextField expenseTF;

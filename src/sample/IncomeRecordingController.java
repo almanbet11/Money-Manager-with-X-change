@@ -15,7 +15,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class IncomeRecordingController extends WelcomingPageController implements Initializable {
+public class IncomeRecordingController implements Initializable {
 
     @FXML
     private Button saveButton;
