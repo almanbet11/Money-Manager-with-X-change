@@ -112,7 +112,7 @@ public class InfoPageController implements Initializable{
         if (result.length() == 0){
             this.historyTA.setText("");}
         else{
-            this.historyTA.setText(result.substring(4, result.length()-1));}
+            this.historyTA.setText(result);}
     }
 
     //Method for values that are taken from Expense page
@@ -132,7 +132,7 @@ public class InfoPageController implements Initializable{
             this.income.setText(Integer.toString(initialIncome));
             this.expense.setText("-" + currentUser.getExpense());
             this.balance.setText(Integer.toString(currentUser.getBalance()));
-            this.historyTA.setText(result.substring(4, result.length()-1));
+            this.historyTA.setText(result);
             }
             else{
                 this.firstNameLastName.setText(currentUser.getFistName() + " " + currentUser.getLastName());
@@ -140,7 +140,7 @@ public class InfoPageController implements Initializable{
                 this.income.setText(Integer.toString(initialIncome));
                 this.expense.setText("-" + currentUser.getExpense());
                 this.balance.setText(Integer.toString(currentUser.getBalance()));
-                this.historyTA.setText(result.substring(4, result.length()-1));
+                this.historyTA.setText(result);
 
             }
 
