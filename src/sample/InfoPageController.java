@@ -49,7 +49,7 @@ public class InfoPageController implements Initializable{
 
     private static int staticExpense = 0;
 
-    private static String result;
+    private static String result = "";
 
 
     @FXML
@@ -108,7 +108,11 @@ public class InfoPageController implements Initializable{
         this.currencyType.setText(currentUser.getCurrencyType());
         this.income.setText(Integer.toString((initialIncome)));
         this.expense.setText("-" + staticExpense);
-        this.historyTA.setText(result.substring(4, result.length()-1));
+
+        if (result.length() == 0){
+            this.historyTA.setText("");}
+        else{
+            this.historyTA.setText(result.substring(4, result.length()-1));}
     }
 
     //Method for values that are taken from Expense page
